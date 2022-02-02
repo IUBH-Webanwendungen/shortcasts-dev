@@ -21,3 +21,20 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#####################################
+# Custom entries from here on ...
+#####################################
+
+# Unnecessary Netbeans and IntelliJ project files
+.project
+build
+private
+target
+.idea
+.DS_Store
+*.iml
+
+# Unnecessary Eclipse project files
+.settings reinschreiben
+.classpath reinschreiben
