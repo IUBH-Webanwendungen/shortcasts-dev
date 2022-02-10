@@ -36,5 +36,5 @@ target
 *.iml
 
 # Unnecessary Eclipse project files
-.settings reinschreiben
-.classpath reinschreiben
+.settings 
+.classpath 
