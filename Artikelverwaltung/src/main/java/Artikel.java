@@ -1,14 +1,19 @@
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Named;
-
-@Named
-@RequestScoped
 public class Artikel
 {
-    private String name = "Filzpantoffeln 'Rudolph'";
+    private int nr;
 
-    public Artikel()
+    private String name;
+
+    private String beschreibung;
+
+    private String bild;
+
+    public Artikel(int nr, String name, String beschreibung, String bild)
     {
+        this.nr = nr;
+        this.name = name;
+        this.beschreibung = beschreibung;
+        this.bild = bild;
     }
 
     public String getName()
@@ -16,8 +21,18 @@ public class Artikel
         return name;
     }
 
-    public void setName(String name)
+    public int getNr()
     {
-        this.name = name;
+        return nr;
+    }
+
+    public String getBeschreibung()
+    {
+        return beschreibung;
+    }
+
+    public String getBild()
+    {
+        return bild;
     }
 }

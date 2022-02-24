@@ -1,11 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-  <title>Facelet Title</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  <title>Artikelverwaltung</title>
 </h:head>
 <h:body>
-  Hallo Welt!
+  <p><img id="kopf_links" src="logo.jpg" width="250" alt="Logo"/></p>
+  <p id="kopf_rechts">
+    <h:outputText value="#{anschrift.name}"/>
+    <br/>
+    <h:outputText value="#{anschrift.strasse} #{anschrift.hausnummer}"/>
+    <br/>
+    <h:outputText value="#{anschrift.plz} #{anschrift.ort}"/>
+  </p>
+  <h1>Artikelverwaltung</h1>
+  <h2>Übersicht über alle Artikel</h2>
+  <h:dataTable var="artikel" value="#{shop.sortiment}"
+               styleClass="artikel" rowClasses="ungerade, gerade"
+               columnClasses="nr">
+    <h:column>
+      <f:facet name="header">Nr</f:facet>
+      <h:outputText value="#{artikel.nr}"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header">Name</f:facet>
+      <h:outputText value="#{artikel.name}"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header">Beschreibung</f:facet>
+      <h:outputText value="#{artikel.beschreibung}"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header">Bild</f:facet>
+      <h:graphicImage url="#{artikel.bild}"/>
+    </h:column>
+  </h:dataTable>
+  <!--
+  <table id="artikel">
+    <tr>
+      <th>Nr</th>
+      <th>Name</th>
+      <th>Beschreibung</th>
+      <th>Bild</th>
+    </tr>
+    <tr>
+      <td class="spalte1">1</td>
+      <td>Pantoffeln "Rudolph"</td>
+      <td>Wunderschöne Filzpantoffeln</td>
+      <td><img src="filzschuhe.jpg" alt="Auf dem Bild sind Filzschuhe zu sehen."
+               width="100px" height="100px" title="Filzschuhe 'Rudolph'" /></td>
+    </tr>
+    <tr>
+      <td class="spalte1">2</td>
+      <td>Handtasche "Cosmopolita"</td>
+      <td>Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung</td>
+      <td><img src="handtasche.jpg" alt="Auf dem Bild ist eine Filzhandtasche zu sehen."
+               width="100px" height="100px" title="Handtasche 'Cosmopolita'" /></td>
+    </tr>
+  </table>
+  -->
+  <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>
-
