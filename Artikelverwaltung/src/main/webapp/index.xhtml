@@ -16,34 +16,25 @@
     <h:outputText value="#{anschrift.plz} #{anschrift.ort}"/>
   </p>
   <h1>Artikelverwaltung</h1>
-  <h2>Übersicht über alle Artikel</h2>
-  <h:dataTable var="artikel" value="#{shop.sortiment}"
-               styleClass="artikel" rowClasses="ungerade, gerade"
-               columnClasses="nr, , , bild">
-    <h:column>
-      <f:facet name="header">Nr</f:facet>
-      <h:outputText value="#{artikel.nr}"/>
-    </h:column>
-    <h:column>
-      <f:facet name="header">Name</f:facet>
-      <h:outputText value="#{artikel.name}"/>
-    </h:column>
-    <h:column>
-      <f:facet name="header">Beschreibung</f:facet>
-      <h:outputText value="#{artikel.beschreibung}"/>
-    </h:column>
-    <h:column>
-      <f:facet name="header">Bild</f:facet>
-      <h:graphicImage url="#{artikel.bild}"/>
-    </h:column>
-    <h:column>
-      <h:form>
-        <h:commandLink action="#{shop.sortiment.remove(artikel)}">
-          <img src="x.png"/>
-        </h:commandLink>
-      </h:form>
-    </h:column>
-  </h:dataTable>
+  <h2>Artikelerfassung</h2>
+  <h:form>
+    <h:panelGrid columns="2">
+      <h:commandLink value="zurück" action="#{artikelController.zurueck()}" />
+      <h:commandLink value="vor" action="#{artikelController.vor()}" />
+      <h:outputLabel value="Nr:" for="nr" />
+      <h:outputText id="nr" value="#{artikelController.artikel.nr}" />
+      <h:outputLabel value="Name:" for="name" />
+      <h:inputText id="name" value="#{artikelController.artikel.name}"  size="40"/>
+      <h:outputLabel value="Beschreibung:" for="text" />
+      <h:inputText id="text" value="#{artikelController.artikel.text}"  size="40"/>
+      <h:outputLabel value="Bild-Datei:" for="bilddatei" />
+      <h:inputText id="bilddatei" value="#{artikelController.artikel.bild}" size="40"/>
+      <h:outputLabel value="Bild:" for="name" />
+      <h:graphicImage id="bild" url="#{artikelController.artikel.bild}"/>
+      <h:commandLink value="zurück" action="#{artikelController.zurueck()}" />
+      <h:commandLink value="vor" action="#{artikelController.vor()}" />
+    </h:panelGrid>
+  </h:form>
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>

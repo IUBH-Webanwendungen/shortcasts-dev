@@ -4,16 +4,16 @@ public class Artikel
 
     private String name;
 
-    private String beschreibung;
+    private String text;
 
     private String bild;
 
-    public Artikel(int nr, String name, String beschreibung, String bild)
+    public Artikel(int nr, String name, String text, String bild)
     {
         this.nr = nr;
-        this.name = name;
-        this.beschreibung = beschreibung;
-        this.bild = bild;
+        this.setName(name);
+        this.setText(text);
+        this.setBild(bild);
     }
 
     public String getName()
@@ -26,13 +26,25 @@ public class Artikel
         return nr;
     }
 
-    public String getBeschreibung()
+    public String getText()
     {
-        return beschreibung;
+        return text;
     }
 
     public String getBild()
     {
         return bild;
     }
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setBild(String bild) {
+		this.bild = bild;
+	}
 }

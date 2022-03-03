@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
@@ -8,7 +9,7 @@ import jakarta.inject.Named;
 @ApplicationScoped
 public class Shop
 {
-    private Collection<Artikel> sortiment = new ArrayList<Artikel>();
+    private List<Artikel> sortiment = new ArrayList<Artikel>();
 
     /**
      * Creates a new instance of Shop
@@ -24,7 +25,7 @@ public class Shop
                 "Zwei putzige Hasen aus Filz zur Dekoration", "hasen.png"));
     }
 
-    public Collection<Artikel> getSortiment()
+    public List<Artikel> getSortiment()
     {
         return sortiment;
     }
