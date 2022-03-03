@@ -19,7 +19,7 @@
   <h2>Übersicht über alle Artikel</h2>
   <h:dataTable var="artikel" value="#{shop.sortiment}"
                styleClass="artikel" rowClasses="ungerade, gerade"
-               columnClasses="nr">
+               columnClasses="nr, , , bild">
     <h:column>
       <f:facet name="header">Nr</f:facet>
       <h:outputText value="#{artikel.nr}"/>
@@ -36,31 +36,14 @@
       <f:facet name="header">Bild</f:facet>
       <h:graphicImage url="#{artikel.bild}"/>
     </h:column>
+    <h:column>
+      <h:form>
+        <h:commandLink action="#{shop.sortiment.remove(artikel)}">
+          <img src="x.png"/>
+        </h:commandLink>
+      </h:form>
+    </h:column>
   </h:dataTable>
-  <!--
-  <table id="artikel">
-    <tr>
-      <th>Nr</th>
-      <th>Name</th>
-      <th>Beschreibung</th>
-      <th>Bild</th>
-    </tr>
-    <tr>
-      <td class="spalte1">1</td>
-      <td>Pantoffeln "Rudolph"</td>
-      <td>Wunderschöne Filzpantoffeln</td>
-      <td><img src="filzschuhe.jpg" alt="Auf dem Bild sind Filzschuhe zu sehen."
-               width="100px" height="100px" title="Filzschuhe 'Rudolph'" /></td>
-    </tr>
-    <tr>
-      <td class="spalte1">2</td>
-      <td>Handtasche "Cosmopolita"</td>
-      <td>Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung</td>
-      <td><img src="handtasche.jpg" alt="Auf dem Bild ist eine Filzhandtasche zu sehen."
-               width="100px" height="100px" title="Handtasche 'Cosmopolita'" /></td>
-    </tr>
-  </table>
-  -->
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>

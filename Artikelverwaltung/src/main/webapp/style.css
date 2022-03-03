@@ -1,25 +1,24 @@
 body {
-    font-family: Arial;
+  font-family: Arial;
 }
 
-h1 {
-    font-size: 1.7em;
+h1{
+  font-size: 1.7em;
 }
 
-h2 {
-    font-size: 1.2em;
+h2{
+  font-size: 1.2em;
 }
 
 #kopf_links {
-    float: left;
-    margin: 5px;
-    margin-right: 20px;
+  float: left;
+  margin: 5px;
+  margin-right: 20px;
 }
 
 #kopf_rechts {
-    height: 130px;
+  height:130px;
 }
-
 /*
 table#artikel {
         width: 95%;
@@ -45,37 +44,37 @@ td.spalte1 {
 }
 */
 p#fussnote {
-    font-size: 0.7em;
+  font-size: 0.7em;
 }
 
 table.artikel {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid grey;
-    padding: 3px;
-    padding-left: 8px;
+  border: 1px solid grey;
+  padding: 3px;
+  padding-left: 8px;
 }
 
 th {
-    text-align: left;
-    background-color: #CCC;
+  text-align: left;
+  background-color: #CCC;
 }
 
 tr.ungerade {
-    background-color: #EEE;
+  background-color: #EEE;
 }
 
 tr.gerade {
-    background-color: #FFF;
+  background-color: #FFF;
 }
 
-td img {
-    height: 100px;
-    width: 100px;
+td.bild img {
+  height: 100px;
+  width: 100px;
 }
 
 td.nr {
-    background-color: lightblue;
+  background-color: lightblue;
 }
