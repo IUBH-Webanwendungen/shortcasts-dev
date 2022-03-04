@@ -21,8 +21,8 @@ public class Shop
         sortiment.add(new Artikel(2, "Handtasche \"Cosmopolita\"",
                 "Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung",
                 "handtasche.jpg"));
-        sortiment.add(new Artikel(3, "Filz-Hasen \"Moe & Joe\"",
-                "Zwei putzige Hasen aus Filz zur Dekoration", "hasen.png"));
+        sortiment.add(new Artikel(3, "Filz-Hase \"Moe\"",
+                "Ein putziger Hase aus Filz zur Dekoration", "hase.jpg"));
     }
 
     public List<Artikel> getSortiment()
