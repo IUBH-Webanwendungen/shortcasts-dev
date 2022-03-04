@@ -21,7 +21,7 @@ public class Shop
                 "Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung",
                 "handtasche.jpg"));
         sortiment.add(new Artikel(3, "Filz-Hasen \"Moe & Joe\"",
-                "Zwei putzige Hasen aus Filz zur Dekoration", "hasen.png"));
+                "Ein putziger Hase aus Filz zur Dekoration", "hase.jpg"));
     }
 
     public Collection<Artikel> getSortiment()
