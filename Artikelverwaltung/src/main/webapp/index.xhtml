@@ -32,19 +32,12 @@
       <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"/>
       <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
       <p:selectOneMenu value="#{artikelController.artikel.bild}">
-        <f:selectItem itemValue="filzschuhe.jpg" itemLabel="filzschuhe.jpg"/>
-        <f:selectItem itemValue="handtasche.jpg" itemLabel="handtasche.jpg"/>
-        <f:selectItem itemValue="hasen.png" itemLabel="hasen.png"/>
+        <!--  <f:selectItem itemValue="#{artikelController.artikel.bild}" itemLabel="filzschuhe.jpg"/>
+        <f:selectItem itemValue="#{artikelController.artikel.bild}" itemLabel="handtasche.jpg"/>
+        <f:selectItem itemValue="#{artikelController.artikel.bild}" itemLabel="hasen.png"/>-->
+        <f:selectItems value="#{shop.sortiment}" var="artikel" itemLabel="#{artikel.bild}" itemValue="#{artikel.bild}"/>
         <p:ajax event="change" update="bild"/>
       </p:selectOneMenu>
-      <html></html>
-      <h:inputText
-          id="bilddatei"
-          value="#{artikelController.artikel.bild}"
-          size="40">
-        <p:ajax event="keyup" update="bild"/>
-      </h:inputText>
-
       <h:outputLabel value="Verfügbar ab:" for="verfuegbarAb"/>
       <p:calendar
           id="verfuegbarAb"
@@ -56,9 +49,16 @@
       <h:graphicImage id="bild" url="#{artikelController.artikel.bild}"/>
       <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
                      rendered="#{artikelController.index > 0}"/>
+      <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
       <h:commandLink value="vor" action="#{artikelController.vor()}"/>
     </h:panelGrid>
   </h:form>
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>
+      <!--  <h:inputText
+          id="bilddatei"
+          value="#{artikelController.artikel.bild}"
+          size="40">
+        <p:ajax event="keyup" update="bild"/>
+      </h:inputText>-->

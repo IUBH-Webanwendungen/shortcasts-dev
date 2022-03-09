@@ -22,8 +22,8 @@ public class Shop implements Serializable
         sortiment.add(new Artikel(2, "Handtasche \"Cosmopolita\"",
                 "Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung",
                 "handtasche.jpg", (new GregorianCalendar(2010, 10, 3).getTime())));
-        sortiment.add(new Artikel(3, "Filz-Hasen \"Moe & Joe\"",
-                "Zwei putzige Hasen aus Filz zur Dekoration", "hasen.png",
+        sortiment.add(new Artikel(3, "Filz-Hase \"Moe\"",
+                "Ein putziger Hase aus Filz zur Dekoration", "hase.jpg",
                 (new GregorianCalendar(2013, 11, 31).getTime())));
     }
 
