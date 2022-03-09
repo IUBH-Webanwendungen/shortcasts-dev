@@ -1,4 +1,7 @@
-public class Artikel
+import java.io.Serializable;
+import java.util.Date;
+
+public class Artikel implements Serializable
 {
     private int nr;
 
@@ -8,17 +11,34 @@ public class Artikel
 
     private String bild;
 
+    private Date verfuegbarAb;
+
+    public Artikel()
+    {
+    }
+
     public Artikel(int nr, String name, String text, String bild)
     {
+        this(nr, name, text, bild, new Date(0));
+    }
+
+    public Artikel(int nr, String name, String text, String bild, Date verfuegbarAb)
+    {
         this.nr = nr;
-        this.setName(name);
-        this.setText(text);
-        this.setBild(bild);
+        this.name = name;
+        this.text = text;
+        this.bild = bild;
+        this.verfuegbarAb = verfuegbarAb;
     }
 
     public String getName()
     {
         return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     public int getNr()
@@ -31,20 +51,28 @@ public class Artikel
         return text;
     }
 
+    public void setText(String text)
+    {
+        this.text = text;
+    }
+
     public String getBild()
     {
         return bild;
     }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setBild(String bild)
+    {
+        this.bild = bild;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public Date getVerfuegbarAb()
+    {
+        return verfuegbarAb;
+    }
 
-	public void setBild(String bild) {
-		this.bild = bild;
-	}
+    public void setVerfuegbarAb(Date verfuegbarAb)
+    {
+        this.verfuegbarAb = verfuegbarAb;
+    }
 }
