@@ -32,9 +32,6 @@
       <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"/>
       <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
       <p:selectOneMenu value="#{artikelController.artikel.bild}">
-        <!--  <f:selectItem itemValue="#{artikelController.artikel.bild}" itemLabel="filzschuhe.jpg"/>
-        <f:selectItem itemValue="#{artikelController.artikel.bild}" itemLabel="handtasche.jpg"/>
-        <f:selectItem itemValue="#{artikelController.artikel.bild}" itemLabel="hasen.png"/>-->
         <f:selectItems value="#{shop.sortiment}" var="artikel" itemLabel="#{artikel.bild}" itemValue="#{artikel.bild}"/>
         <p:ajax event="change" update="bild"/>
       </p:selectOneMenu>

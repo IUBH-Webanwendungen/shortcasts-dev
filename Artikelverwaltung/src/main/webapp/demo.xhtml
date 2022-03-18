@@ -6,20 +6,41 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Primefaces-Komponenten - Demo</title>
+  		<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
     </h:head>
     <h:body>
         <h:form>
+        	<p:carousel value="#{shop.sortiment}" var="artikel" circular="true" autoplayInterval="2000" style="
+        			width:50%; 
+        			text-align: center;
+        			border: 1px solid var(--surface-d);
+        			border-radius: 3px;
+        			margin: .3rem;
+        			">        	
+        	    <f:facet name="header">
+        			<h2>Unser Sortiment</h2>
+    			</f:facet>
+    			<h3>
+			    	#{artikel.name}
+			    </h3>
+			    <p>
+			    #{artikel.text}
+			    </p>
+			    <p:graphicImage url="#{artikel.bild}" width="25%" 
+			        style="box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)"/>
+			</p:carousel>
+        
             <h1>Inputs</h1>
-            <h:panelGrid columns="2" border="1">
+            <p:panelGrid columns="2" border="0">
 
-                <h:outputLabel value="p:editor"/>
-                <p:textEditor toolbar="full" secure="false"/>
+                <h:outputLabel value="p:textEditor"/>
+                <p:textEditor secure="false"/>
 
                 <h:outputLabel value="p:fileUpload"/>
                 <p:fileUpload/>
 
                 <h:outputLabel value="p:inplace"/>
-                <p:inplace editor="true"><p:inputText value="Hello!"/></p:inplace>
+                <p:inplace editor="true"> <p:inputText value="ändere mich"/> </p:inplace>
 
                 <h:outputLabel value="p:spinner"/>
                 <p:spinner value="2030"
@@ -31,11 +52,11 @@
                     <p:inputText id="txt" value="3.7"/>
                     <p:slider for="txt" range="false" value="3.7" step="0.1" minValue="0" maxValue="100"/>
                 </p:tab>
-            </h:panelGrid>
+            </p:panelGrid>
 
             <h1>Panels</h1>
-            <h:panelGrid columns="2" border="1">
-                <h:outputLabel value="p:accordion"/>
+            <p:panelGrid columns="2">
+                <h:outputLabel value="p:accordionPanel"/>
                 <p:accordionPanel>
                     <p:tab header="Filzschuhe">
                         <p>Filzschuhe</p>
@@ -48,133 +69,28 @@
                     </p:tab>
                 </p:accordionPanel>
 
-                <h:outputLabel value="p:panel"/>
-                <p:panel>
-                    <p>Hinweis!</p>
-                </p:panel>
+                <h:outputLabel value="p:card"/>
+				<p:card style="width: 25rem; margin-bottom: 2em">
+				    <f:facet name="title">
+				        #{artikel.name}
+				    </f:facet>
+				
+				    <p>#{artikel.text}</p>
+				    <p:graphicImage url="#{artikel.bild}" width="100%" 
+			        style=""/>
+				</p:card>
 
-                <h:outputLabel value="p:tabPanel"/>
+                <h:outputLabel value="p:tabView"/>
                 <p:tabView>
-                    <p:tab title="Hallo!">
+                    <p:tab title="Tab 1">
                         <p>Dies ist Tab 1</p>
                     </p:tab>
-                    <p:tab title="Hallo!">
+                    <p:tab title="Tab 2">
                         <p>Dies ist Tab 2</p>
                     </p:tab>
                 </p:tabView>
-            </h:panelGrid>
-
-            <h1>Selects</h1>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="p:selectOneMenu"/>
-                <p:selectOneMenu>
-                    <f:selectItem itemValue="handtasche.jpg" itemLabel="Handtasche" />
-                    <f:selectItem itemValue="filzschuhe.jpg" itemLabel="Filzschuhe" />
-                    <f:selectItem itemValue="hasen.png" itemLabel="Hasen"/>
-                </p:selectOneMenu>
-
-            </h:panelGrid>
-
-            <h3>p:panel</h3>
-            <p:panel>
-                <f:facet name="header">
-                    <i>Hinweis</i>
-                </f:facet>
-                <p>Die ist ein Hinweis, der HTML-<b>Formatierung</b> <i>ver</i>wendet.</p>
-                <h:outputText value="Dies ist die zweite Zeile des Hinweises."/>
-            </p:panel>
-
-            <h3>p:tabPanel</h3>
-            <p:panel>
-                <p:tab>
-                    <f:facet name="header">
-                        Tab 1
-                    </f:facet>
-                    <p>Die ist ein Hinweis, der HTML-<b>Formatierung</b> <i>ver</i>wendet.</p>
-                    <h:outputText value="Dies ist die zweite Zeile des Hinweises."/>
-                </p:tab>
-
-                <p:tab>
-                    <f:facet name="header">
-                        Tab 2
-                    </f:facet>
-                    <p>Die ist ein Hinweis, der HTML-<b>Formatierung</b> <i>ver</i>wendet.</p>
-                    <h:outputText value="Dies ist die zweite Zeile des Hinweises."/>
-                </p:tab>
-            </p:panel>
-
-            <h3>p:accordionPanel</h3>
-            <p:accordionPanel>
-                <p:tab header="Item 1">
-                    Item 1
-                </p:tab>
-                <p:tab header="Item 2">
-                    Item 2
-                </p:tab>
-                <p:tab header="Item 3">
-                    Item 3
-                </p:tab>
-                <p:tab header="Item 4">
-                    Item 4
-                </p:tab>
-            </p:accordionPanel>
-
-            <br/>
-            <br/>
-
-            <h3>p:panel</h3>
-            <p:panel>
-                <p:tab title="Tab 1">
-                    <h:outputText value="Tab 1"/>
-                </p:tab>
-
-                <p:tab title="Tab 2">
-                    <h:outputText value="Tab 2"/>
-                </p:tab>
-            </p:panel>
-
-            <h3>p:accordion</h3>
-            <p:accordionPanel>
-                <p:tab header="Item 1">
-                    Item 1
-                </p:tab>
-                <p:tab header="Item 2">
-                    Item 2
-                </p:tab>
-                <p:tab header="Item 3">
-                    Item 3
-                </p:tab>
-                <p:tab header="Item 4">
-                    Item 4
-                </p:tab>
-            </p:accordionPanel>
-
-            <br/>
-            <br/>
-            <br/>
-
-            <p:dataTable value="#{shop.sortiment}" var="artikel">
-                <f:facet name="header">
-                    Das Shop-Sortiment
-                </f:facet>
-                <p:column>
-                    <f:facet name="header">Nr</f:facet>
-                    <h:outputText value="#{artikel.nr}"/>
-                </p:column>
-                <p:column>
-                    <f:facet name="header">Name</f:facet>
-                    <h:outputText value="#{artikel.name}"/>
-                </p:column>
-                <p:column>
-                    <f:facet name="header">Beschreibung</f:facet>
-                    <h:outputText value="#{artikel.text}"/>
-                </p:column>
-                <p:column sortBy="#{artikel.verfuegbarAb}" sortOrder="ascending">
-                    <f:facet name="header">Verfügbar ab</f:facet>
-                    <p:calendar value="#{artikel.verfuegbarAb}"/>
-                </p:column>
-            </p:dataTable>
-
+            </p:panelGrid>
+            
             <br/>
             <br/>
             <br/>
@@ -202,34 +118,9 @@
                 </p:column>
             </p:dataTable>
 
-
             <br/>
             <br/>
             <br/>
-
-            <h3>p:select</h3>
-            <p:selectOneMenu value="#{artikelController.artikel.bild}">
-                <f:selectItem itemLabel="handtasche.jpg" itemValue="handtasche.jpg"/>
-                <f:selectItem itemLabel="hasen.png" itemValue="hasen.png"/>
-                <f:selectItem itemLabel="filzschuhe.jpg" itemValue="filzschuhe.jpg"/>
-								<p:ajax event="change" update="pic" />
-            </p:selectOneMenu>
-            <p:commandButton value="OK"/>
-            <br/>
-            <h:graphicImage id="pic" value="#{artikelController.artikel.bild}"/>
-
-            <br/>
-            <br/>
-            <br/>
-
-            
-            <h:inputText 
-                id="bilddatei"
-                value="#{artikelController.artikel.bild}"
-                size="40"
-                ><p:ajax event="keyup" render="bild"/></h:inputText><br/>
-            <h:graphicImage id="bild" value="#{artikelController.artikel.bild}"/>
-            
         </h:form>
     </h:body>
 </html>
