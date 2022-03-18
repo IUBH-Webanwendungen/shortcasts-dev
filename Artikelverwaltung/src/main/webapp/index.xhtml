@@ -22,8 +22,9 @@
     <h:panelGrid columns="2">
       <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
                      rendered="#{artikelController.index > 0}"/>
-      <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
-      <h:commandLink value="vor" action="#{artikelController.vor()}"/>
+      <h:outputText rendered="#{artikelController.index == 0 or (artikelController.index == artikelController.maxIndex)}" value=" "/>
+      <h:commandLink value="vor" action="#{artikelController.vor()}"
+      				rendered="#{artikelController.index lt artikelController.maxIndex}"/>
       <h:outputLabel value="Nr:" for="nr"/>
       <h:outputText id="nr" value="#{artikelController.artikel.nr}"/>
       <h:outputLabel value="Name:" for="name"/>
@@ -46,16 +47,11 @@
       <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" width="250em"/>
       <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
                      rendered="#{artikelController.index > 0}"/>
-      <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
-      <h:commandLink value="vor" action="#{artikelController.vor()}"/>
+      <h:outputText rendered="#{artikelController.index == 0 or (artikelController.index == artikelController.maxIndex)}" value=" "/>
+      <h:commandLink value="vor" action="#{artikelController.vor()}"
+      				rendered="#{artikelController.index lt artikelController.maxIndex}"/>
     </h:panelGrid>
   </h:form>
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>
-      <!--  <h:inputText
-          id="bilddatei"
-          value="#{artikelController.artikel.bild}"
-          size="40">
-        <p:ajax event="keyup" update="bild"/>
-      </h:inputText>-->

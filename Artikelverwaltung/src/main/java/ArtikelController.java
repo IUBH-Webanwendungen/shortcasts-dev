@@ -32,4 +32,8 @@ public class ArtikelController implements Serializable
     {
         return index;
     }
+    
+    public int getMaxIndex() {
+    	return Shop.getInstance().getSortiment().size()-1;
+    }
 }
