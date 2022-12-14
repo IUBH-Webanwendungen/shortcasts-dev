@@ -13,6 +13,8 @@ public class Artikel implements Serializable
 
     private Date verfuegbarAb;
 
+    private String kuerzel;
+
     public Artikel()
     {
     }
@@ -74,5 +76,15 @@ public class Artikel implements Serializable
     public void setVerfuegbarAb(Date verfuegbarAb)
     {
         this.verfuegbarAb = verfuegbarAb;
+    }
+
+    public String getKuerzel()
+    {
+        return kuerzel;
+    }
+
+    public void setKuerzel(String kuerzel)
+    {
+        this.kuerzel = kuerzel;
     }
 }

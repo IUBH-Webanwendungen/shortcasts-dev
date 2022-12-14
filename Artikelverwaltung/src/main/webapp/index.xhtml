@@ -26,15 +26,25 @@
       <h:commandLink value="vor" action="#{artikelController.vor()}"/>
       <h:outputLabel value="Nr:" for="nr"/>
       <h:outputText id="nr" value="#{artikelController.artikel.nr}"/>
+
       <h:outputLabel value="Name:" for="name"/>
-      <h:inputText id="name" value="#{artikelController.artikel.name}" size="40"/>
+      <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true"/>
+
+      <h:outputLabel value="Kürzel: " for="kuerzel"/>
+      <h:inputText id="kuerzel" value="#{artikelController.artikel.kuerzel}" size="20">
+        <f:validateRegex pattern="[A-Za-z0-9_][A-Za-z0-9_][A-Za-z0-9_]+"/>
+      </h:inputText>
+
       <h:outputLabel value="Beschreibung: " for="text"/>
-      <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"/>
+      <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"
+        validator="#{descriptionValidator.check}"/>
+
       <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
-      <p:selectOneMenu value="#{artikelController.artikel.bild}">
+      <p:selectOneMenu value="#{artikelController.artikel.bild}" id="bilddatei">
         <f:selectItems value="#{shop.sortiment}" var="artikel" itemLabel="#{artikel.bild}" itemValue="#{artikel.bild}"/>
         <p:ajax event="change" update="bild"/>
       </p:selectOneMenu>
+
       <h:outputLabel value="Verfügbar ab:" for="verfuegbarAb"/>
       <p:calendar
           id="verfuegbarAb"
@@ -53,9 +63,3 @@
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>
-      <!--  <h:inputText
-          id="bilddatei"
-          value="#{artikelController.artikel.bild}"
-          size="40">
-        <p:ajax event="keyup" update="bild"/>
-      </h:inputText>-->

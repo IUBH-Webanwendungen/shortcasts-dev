@@ -10,3 +10,8 @@ Ergebnis aus dem Video "JSF-Komponenten"
 Ergebnis aus dem Video "Beans: Eine Einführung"
 ## beans-input
 Ergebnis aus dem Video "Beans: Benutzereingaben speichern"
+## primefaces
+Komponentenbibliotheken (einbinden oder verwenden) und Optimierungen
+## business-objects-validation
+Einführung und Validierung der Geschäftsobjekte
+
