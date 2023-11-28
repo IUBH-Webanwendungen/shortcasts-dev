@@ -52,6 +52,13 @@
           datePattern="dd.MM.yyyy"
           enableManualInput="true">
       </p:calendar>
+
+      <h:outputLabel value="Dimensionen (B x L x W): " for="dimensionen"/>
+      <p:inputText value="#{artikelController.artikel.dimensionen}"
+                   id="dimensionen" ><f:converter converterId="DimensionenConverter"/></p:inputText>
+
+
+
       <h:outputLabel value="Bild: " for="bild"/>
       <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" width="250em"/>
       <h:commandLink value="zurück" action="#{artikelController.zurueck()}"

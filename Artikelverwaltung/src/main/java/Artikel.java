@@ -15,6 +15,8 @@ public class Artikel implements Serializable
 
     private String kuerzel;
 
+    private double[] dimensionen;
+
     public Artikel()
     {
     }
@@ -86,5 +88,15 @@ public class Artikel implements Serializable
     public void setKuerzel(String kuerzel)
     {
         this.kuerzel = kuerzel;
+    }
+
+    public double[] getDimensionen()
+    {
+        return dimensionen;
+    }
+
+    public void setDimensionen(double[] dimensionen)
+    {
+        this.dimensionen = dimensionen;
     }
 }
