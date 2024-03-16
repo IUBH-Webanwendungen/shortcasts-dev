@@ -18,17 +18,18 @@ public class DimensionenConverter implements Converter {
             liste.add(Double.parseDouble(s.substring(q,p).trim()));
             q = p+1;
         }
+        if (p+1<s.length()) liste.add(Double.parseDouble(s.substring(q, s.length()).trim()));
         return liste.toArray();
     }
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
         StringBuilder b = new StringBuilder();
-        Double[] dd = (Double[]) o;
+        Object[] dd = (Object[]) o;
         int m = dd.length;
         for(int i=0; i<m; i++) {
             if(i>0) b.append(" x ");
-            b.append(dd[i].toString());
+            b.append(Double.toString((Double) dd[i]));
         }
         return b.toString();
     }

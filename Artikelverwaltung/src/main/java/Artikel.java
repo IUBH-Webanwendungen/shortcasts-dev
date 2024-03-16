@@ -15,7 +15,7 @@ public class Artikel implements Serializable
 
     private String kuerzel;
 
-    private double[] dimensionen;
+    private Double[] dimensionen = new Double[] {100.0, 100.0, 100.0};
 
     public Artikel()
     {
@@ -90,12 +90,12 @@ public class Artikel implements Serializable
         this.kuerzel = kuerzel;
     }
 
-    public double[] getDimensionen()
+    public Double[] getDimensionen()
     {
         return dimensionen;
     }
 
-    public void setDimensionen(double[] dimensionen)
+    public void setDimensionen(Double[] dimensionen)
     {
         this.dimensionen = dimensionen;
     }
