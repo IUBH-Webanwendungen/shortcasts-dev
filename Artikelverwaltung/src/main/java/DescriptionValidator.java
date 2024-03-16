@@ -4,6 +4,12 @@ import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.validator.ValidatorException;
 import jakarta.inject.Named;
+import org.languagetool.JLanguageTool;
+import org.languagetool.Languages;
+import org.languagetool.rules.RuleMatch;
+
+import java.io.IOException;
+import java.util.List;
 
 @ApplicationScoped
 @Named
@@ -27,7 +33,21 @@ public class DescriptionValidator
                     new FacesMessage("Text zu lang!"));
 
         // Criteria 3: Proper grammar
-        // TODO: call Duden Mentor
+        JLanguageTool langTool = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
+        try {
+            List<RuleMatch> matches = langTool.check(text);
+            if (matches!=null && !matches.isEmpty()) {
+                StringBuilder str = new StringBuilder("Sprachprobleme: ");
+                for (RuleMatch match : matches) {
+                    str.append(match.getFromPos()).append("-").append(match.getToPos()).append(": " ).append( match.getMessage()).append("\n");
+                    str.append("  Suggested correction(s): " + match.getSuggestedReplacements()).append("\n");
+                }
+                throw new ValidatorException(new FacesMessage(str.toString()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ValidatorException(new FacesMessage(e.getMessage()));
+        }
 
     }
 }

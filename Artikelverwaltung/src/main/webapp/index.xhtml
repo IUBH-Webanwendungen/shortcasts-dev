@@ -82,6 +82,7 @@
       <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
       <h:commandLink value="vor" action="#{artikelController.vor()}"/>
     </h:panelGrid>
+    <h:commandButton action="#{artikelController.removeArtikel}" value="Löschen"/>
   </h:form>
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
