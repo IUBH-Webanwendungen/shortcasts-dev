@@ -10,8 +10,6 @@ import jakarta.inject.Named;
 @ApplicationScoped
 public class Shop implements Serializable
 {
-    private static Shop instance = new Shop();
-
     private List<Artikel> sortiment = new ArrayList<Artikel>();
 
     public Shop()
@@ -25,11 +23,6 @@ public class Shop implements Serializable
         sortiment.add(new Artikel(3, "Filz-Hase \"Moe\"",
                 "Ein putziger Hase aus Filz zur Dekoration", "hase.jpg",
                 (new GregorianCalendar(2013, 11, 31).getTime())));
-    }
-
-    public static Shop getInstance()
-    {
-        return instance;
     }
 
     public List<Artikel> getSortiment()
