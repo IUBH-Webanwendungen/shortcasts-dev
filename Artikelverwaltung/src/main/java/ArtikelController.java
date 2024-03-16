@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
@@ -9,14 +10,17 @@ public class ArtikelController implements Serializable
 {
     private int index = 0;
 
+    @Inject
+    Shop shop;
+
     public Artikel getArtikel()
     {
-        return Shop.getInstance().getSortiment().get(index);
+        return shop.getSortiment().get(index);
     }
 
     public void vor()
     {
-      if (index < Shop.getInstance().getSortiment().size() - 1) {
+      if (index < shop.getSortiment().size() - 1) {
         index++;
       }
     }
@@ -34,6 +38,6 @@ public class ArtikelController implements Serializable
     }
     
     public int getMaxIndex() {
-    	return Shop.getInstance().getSortiment().size()-1;
+    	return shop.getSortiment().size()-1;
     }
 }
