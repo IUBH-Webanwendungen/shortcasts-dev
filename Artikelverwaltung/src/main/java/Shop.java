@@ -16,12 +16,13 @@ public class Shop implements Serializable
     {
 
         sortiment.add(new Artikel(1, "Pantoffeln \"Rudolph\"",
-                "Wunderschöne Filzpantoffeln", "filzschuhe.jpg", (new GregorianCalendar(2012, 11, 23).getTime())));
+                "Wunderschöne Filzpantoffeln, in beige Farbe mit einem braunen und schwarzen Kringel. Sehr angenehm für kalte Wintertage.",
+                "filzschuhe.jpg", (new GregorianCalendar(2012, 11, 23).getTime())));
         sortiment.add(new Artikel(2, "Handtasche \"Cosmopolita\"",
-                "Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung",
+                "Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung. Irgendwie kommen wir nie aus dem Haus ohne solchen nützlichen Accessoire.",
                 "handtasche.jpg", (new GregorianCalendar(2010, 10, 3).getTime())));
         sortiment.add(new Artikel(3, "Filz-Hase \"Moe\"",
-                "Ein putziger Hase aus Filz zur Dekoration", "hase.jpg",
+                "Ein putziger Hase aus Filz zur Dekoration. Er lässt sich gern am Rand seines Büros stellen, um Mut zu geben.", "hase.jpg",
                 (new GregorianCalendar(2013, 11, 31).getTime())));
     }
 
