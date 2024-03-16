@@ -2,48 +2,34 @@ import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
-import jakarta.inject.Named;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @FacesConverter("DimensionenConverter")
-@Named
-public class DimensionenConverter implements Converter
-{
-    Pattern pattern = Pattern.compile("([0-9]+)(.|,)?([0-9]*)");
+public class DimensionenConverter implements Converter {
 
-    @Override public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s)
-    {
-        Matcher m = pattern.matcher(s);
-        List<Double> comps = new LinkedList<>();
-        while (m.find()) {
-            String beforeComma = m.group(1), afterComma = m.group(3);
-            if(afterComma == null || afterComma.length()==0)
-                comps.add(Double.parseDouble(beforeComma));
-            else
-                comps.add(Double.parseDouble(beforeComma)
-                        + Double.parseDouble(afterComma)*Math.pow(10, -afterComma.length()));
+
+    @Override
+    public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
+        int p=0, q=0;
+        List<Double> liste = new ArrayList<>();
+        while (q<s.length() && (p=s.indexOf("x", q))>-1) {
+            liste.add(Double.parseDouble(s.substring(q,p).trim()));
+            q = p+1;
         }
-        Double[] co = new Double[comps.size()];
-        int i=0; for(Iterator<Double> it = comps.iterator(); it.hasNext(); i++)
-            co[i] = it.next();
-        return co;
+        return liste.toArray();
     }
 
-    @Override public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o)
-    {
+    @Override
+    public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
         StringBuilder b = new StringBuilder();
         Double[] dd = (Double[]) o;
         int m = dd.length;
         for(int i=0; i<m; i++) {
             if(i>0) b.append(" x ");
-            b.append(dd[i]);
+            b.append(dd[i].toString());
         }
-        for(Double d: dd) b.append(d);
         return b.toString();
     }
 }
