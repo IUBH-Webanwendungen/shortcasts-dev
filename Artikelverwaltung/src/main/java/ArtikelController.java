@@ -32,6 +32,11 @@ public class ArtikelController implements Serializable
       }
     }
 
+    public void removeArtikel() {
+        if(!shop.getSortiment().isEmpty())
+            shop.getSortiment().remove(index);
+    }
+
     public int getIndex()
     {
         return index;
