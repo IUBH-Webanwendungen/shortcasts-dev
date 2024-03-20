@@ -21,11 +21,16 @@ public class LoginController implements Serializable {
     @Inject
     CurrentUser currentUser;
 
-    // those are text-field values
+    // TODO: diese Wert sollte aus einer Konfiguration kommen.
+    //       Jede Installation sollte eine Unterschiedlich haben.
+    //       Dieser Salt muss geheim bleiben.
+    private static final String salt = "vXsia8c04PhBtnG3isvjlemj7Bm6rAhBR8JRkf2z";
+
+    // das sind die text-felder (zB, um zu den Benutzern zu zeigen)
     String user, password;
-    // this setting comes earlier
+    // dieses Feld ist für die Lagerung in den Validierungsstufen
     String tempUsername;
-    // this is used for the next display
+    // dieser Feld ist für die Anzeige zu den Benutzern das nächste Mal
     String failureMessage = "";
 
     public String getUser() {
@@ -75,7 +80,7 @@ public class LoginController implements Serializable {
 
     public void validateLogin(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         String password = (String) value;
-        shop.validateUsernameAndPassword(currentUser, tempUsername, password);
+        shop.validateUsernameAndPassword(currentUser, tempUsername, password, salt);
         if (!currentUser.isValid())
             throw new ValidatorException(new FacesMessage("Login falsch!"));
     }
@@ -91,5 +96,13 @@ public class LoginController implements Serializable {
             this.failureMessage = "Passwort und Benutzername nicht erkannt.";
             return "";
         }
+    }
+
+    public static void main(String[] args) {
+        if(args.length!=2) {
+            System.err.println("Usage: java LoginController user pass");
+            System.exit(1);
+        }
+        System.out.println(Shop.hashPassword(args[0], args[1], salt));
     }
 }
