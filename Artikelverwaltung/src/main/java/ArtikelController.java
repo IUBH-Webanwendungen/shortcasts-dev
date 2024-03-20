@@ -13,6 +13,9 @@ public class ArtikelController implements Serializable
     @Inject
     Shop shop;
 
+    @Inject
+    CurrentUser currentUser;
+
     public Artikel getArtikel()
     {
         return shop.getSortiment().get(index);
@@ -45,4 +48,6 @@ public class ArtikelController implements Serializable
     public int getMaxIndex() {
     	return shop.getSortiment().size()-1;
     }
+
+
 }

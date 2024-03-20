@@ -1,16 +1,24 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
+import org.checkerframework.checker.units.qual.Current;
 
 @Named
 @ApplicationScoped
 public class Shop implements Serializable
 {
-    private List<Artikel> sortiment = new ArrayList<Artikel>();
+    private final List<Artikel> sortiment = new ArrayList<Artikel>();
+
+    private final String[][] users =
+            new String[][]{
+                    new String[]{"koch", "i-am-the-boss", "admin"},
+                    new String[]{"you", "you-are-the-client", "client"}
+            };
 
     public Shop()
     {
@@ -29,5 +37,22 @@ public class Shop implements Serializable
     public List<Artikel> getSortiment()
     {
         return sortiment;
+    }
+
+
+    void validateUsernameAndPassword(CurrentUser currentUser, String name,String pass) {
+        currentUser.reset();
+        for(String[] user: users) {
+            if(user[0].equals(name)) {
+                if(user[1].equals(pass)) {
+                    if(user[2].equals("admin")) {
+                        currentUser.admin = true; return;
+                    } else if(user[2].equals("client")) {
+                        currentUser.client = true; return;
+                    }
+                    else throw new RuntimeException("Benutzer " + name + " ist falsch angelegt.");
+                }
+            }
+        }
     }
 }

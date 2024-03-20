@@ -6,6 +6,7 @@
 <h:head>
   <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
   <title>Artikelverwaltung</title>
+  <h:outputText value="#{loginController.checkLogin()}"/>
 </h:head>
 <h:body>
   <p><img id="kopf_links" src="logo.jpg" width="250" alt="Logo"/></p>
@@ -83,6 +84,7 @@
       <h:commandLink value="vor" action="#{artikelController.vor()}"/>
     </h:panelGrid>
     <h:commandButton action="#{artikelController.removeArtikel}" value="Löschen"/>
+    <h:commandLink action="#{loginController.logout}" value="Logout"/>
   </h:form>
   <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+    <title>Artikelverwaltung</title>
+    <h:outputText value="#{loginController.checkLogin()}"/>
+</h:head>
+<h:body>
+    <p><img id="kopf_links" src="logo.jpg" width="250" alt="Logo"/></p>
+    <p id="kopf_rechts">
+        <h:outputText value="#{anschrift.name}"/>
+        <br/>
+        <h:outputText value="#{anschrift.strasse} #{anschrift.hausnummer}"/>
+        <br/>
+        <h:outputText value="#{anschrift.plz} #{anschrift.ort}"/>
+    </p>
+    <h1>Shoppe Filzprodukte!</h1>
+    <h:form>
+        <h:panelGrid columns="2" >
+            <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
+                           rendered="#{artikelController.index > 0}"/>
+            <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
+
+            <h:commandLink value="vor" action="#{artikelController.vor()}" rendered="#{artikelController.index &lt; artikelController.maxIndex}"/>
+            <h:outputText rendered="#{artikelController.index == artikelController.maxIndex}" value=" "/>
+
+
+            <h:outputLabel value="Nr:" for="nr"/>
+            <h:outputText id="nr" value="#{artikelController.artikel.nr}"/>
+            <h:outputText value=""/>
+
+
+            <h:outputLabel value="Name:" for="name"/>
+            <h:outputText id="name" value="#{artikelController.artikel.name}"/>
+            <h:outputText value="#{artikelController.artikel.kuerzel}"/>
+
+            <h:outputLabel value="Beschreibung: " for="text"/>
+            <h:outputText id="text" value="#{artikelController.artikel.text}"/>
+
+
+            <!-- TODO: filter, damit es "als nicht verfügbar" angezeigt wird -->
+
+
+            <h:outputLabel value="Dimensionen (B x L x W): "/>
+            <h:outputText value="#{artikelController.artikel.dimensionen}">
+                <f:converter converterId="DimensionenConverter"/>
+            </h:outputText>
+
+
+            <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" width="250em"/>
+            <h:outputText value=""/>
+
+
+            <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
+                           rendered="#{artikelController.index > 0}"/>
+            <h:outputText value=""/>
+            <h:outputText rendered="#{artikelController.index == 0}" value=" "/>
+            <h:commandLink value="vor" action="#{artikelController.vor()}"/>
+        </h:panelGrid>
+        <h:commandLink action="#{loginController.logout}" value="Logout"/>
+    </h:form>
+    <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
+</h:body>
+</html>
